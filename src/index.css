@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+.spin-icon {
+  transform: rotate(315deg);
+}
+label {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  font-family: SF Pro Display, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.rdrSelected,
+.rdrInRange,
+.rdrStartEdge,
+.rdrEndEdge {
+  color: #C66078 !important;
+}
+
+.rdrMonthAndYearWrapper .rdrPprevButton {
+  order: 2;
+  background: transparent;
+  position: absolute;
+  right: 40px;
+}
+
+.rdrMonthAndYearWrapper .rdrMonthAndYearPickers {
+  order: 1;
+}
+
+.rdrMonthAndYearWrapper .rdrNextButton {
+  order: 2;
+  background: transparent;
+}
+/* .rdrMonthAndYearWrapper .rdrNextButton i {
+  width: 32px;
+  height: 32px;
+  background-position: 20px 10px;
+  border: none;
+  rotate: -90deg;
+  background: url("data:image/svg+xml;utf8,<svg width='9px' height='6px' viewBox='0 0 9 6' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Artboard' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' transform='translate(-636.000000, -171.000000)' fill-opacity='0.368716033'><g id='input' transform='translate(172.000000, 37.000000)' fill='%230E242F' fill-rule='nonzero'><g id='Group-9' transform='translate(323.000000, 127.000000)'><path d='M142.280245,7.23952813 C141.987305,6.92353472 141.512432,6.92361662 141.219585,7.23971106 C140.926739,7.5558055 140.926815,8.06821394 141.219755,8.38420735 L145.498801,13 L149.780245,8.38162071 C150.073185,8.0656273 150.073261,7.55321886 149.780415,7.23712442 C149.487568,6.92102998 149.012695,6.92094808 148.719755,7.23694149 L145.498801,10.7113732 L142.280245,7.23952813 Z' id='arrow'></path></g></g></g></svg>") no-repeat;
+} */
+
+.rdrMonthAndYearPickers {
+  flex: none !important;
+}
+
+.rdrMonthPicker select {
+  background: transparent !important;
+  padding: 10px !important;
+}
+
+.rdrYearPicker {
+  margin-left: -20px !important;
+}
+
+/* .rdrDayToday .rdrDayNumber span:after{
+  width: 0px!important;
+} */
+
+.rdrDay {
+  width: (100% / 10) !important;
+  padding: 22px !important;
+}
+
+.rdrDateDisplayWrapper{
+  display: none;
+  visibility: hidden;
+}
+
+.rdrInRange{
+  color: #C66078!important;
+}
+
+.rdrStartEdge {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+.rdrEndEdge {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+}
+
+.rdrDayStartPreview, .rdrDayEndPreview, .rdrDayInPreview{
+  border: 1px solid transparent!important;
+}
+
+/*
+.rdrDayNumber {
+  top: 0!important;
+  width: 32px!important;
+  height: 32px!important;
+  padding: 14!important;
+} */
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+  -webkit-text-fill-color: #333 !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

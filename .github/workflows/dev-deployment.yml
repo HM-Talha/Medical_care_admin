@@ -1,0 +1,72 @@
+name: Development Deployment
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+env:
+  CI : false
+  BROWSER: none
+  EXTEND_ESLINT: true
+  DOMAIN: https://admin.dev.medicalcare.zangula.net
+  REACT_APP_VERSION: $npm_package_version
+  REACT_APP_API_URL: https://dev.medicalcare.zangula.net/api
+  REACT_APP_IS_DEBUG_MODE: false
+jobs:
+  build_and_deploy:
+    environment:
+      name: application-url
+      url: https://admin.dev.medicalcare.zangula.net
+    name: Build and Deploy to Development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.17.1'
+      - run: yarn install # will run `yarn install` command
+      - run: yarn build # will run `yarn build` command
+      - name: Create zip of build.
+        uses: papeloto/action-zip@v1
+        with:
+          files: build/ manifest.json
+          recursive: false
+          dest: build.zip
+      - name: copy file via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: "admin.dev.medicalcare.zangula.net"
+          username: deploy
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: 22
+          source: "build.zip"
+          target: "/home/deploy/medicalcare/admin/current"
+      - name: extract file on server
+        uses: appleboy/ssh-action@master
+        with:
+          host: "admin.dev.medicalcare.zangula.net"
+          username: deploy
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: 22
+          script_stop: true
+          script: |
+            cd  /home/deploy/medicalcare/admin/current
+            rm -rf build
+            echo "unziping the build"
+            unzip build.zip
+            echo "Cleaning the build"
+            rm build.zip
+            echo "Deployment Completed"
+  deployment_test:
+    name: Deployment Health Check
+    runs-on: ubuntu-latest
+    needs: [build_and_deploy]
+    steps:
+    - name: Check the deployed service URL
+      uses: jtalk/url-health-check-action@v2
+      with:
+        url: https://admin.dev.medicalcare.zangula.net
+        follow-redirect: false # Optional, defaults to "false"
+        max-attempts: 3 # Optional, defaults to 1
+        retry-delay: 5s # Optional, only applicable to max-attempts > 1
+        retry-all: false # Optional, defaults to "false"

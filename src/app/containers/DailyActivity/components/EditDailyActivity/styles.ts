@@ -1,0 +1,117 @@
+import { makeStyles } from '@mui/styles';
+
+export const useStyles = makeStyles(() => ({
+  fontBold: {
+    fontWeight: 600,
+  },
+  root: {
+    position: 'absolute',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    // alignItems:'center',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    minWidth: '35%',
+    maxWidth: '500px',
+    backgroundColor: '#fff',
+    borderRadius: '10px',
+    padding: '30px',
+    boxShadow: '24px',
+  },
+  title: {
+    fontSize: '24px',
+    fontWeight: '700',
+    color: '#333333',
+    fontFamily: 'Poppins',
+    textAlign: 'center',
+    alignSelf: 'center',
+    marginRight: '10px',
+  },
+  closeIcon: {
+    position: 'absolute',
+    right: '5px',
+    top: '5px',
+  },
+  submitButton: {
+    // backgroundColor: '#333333',
+    color: '#fff',
+    marginTop: '30px',
+    minHeight: '50px',
+    minWidth: '30%',
+    alignSelf: 'center',
+  },
+  inputRender: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    gap: 8,
+  },
+  formDiv: {
+    display: 'flex',
+    flex: 1,
+    padding: '8px',
+    gap: '24px',
+    justifyContent: 'space-evenly',
+  },
+  addModal: {
+    position: "absolute",
+    background: "#FFFFFF",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    border: "0px",
+    boxShadow: "0",
+    zIndex: "9999",
+    width: "500px",
+  },
+  modalContainer: {
+    padding: "20px",
+    background: "#F5F9F9",
+  },
+  headerModal: {
+    color: "#387E8D",
+    fontFamily: "Cairo",
+    fontWeight: "800",
+    fontSize: "24px",
+  },
+  label:{
+    fontFamily:"Cairo",
+    fontWeight:400,
+    fontSize:"16px",
+    color:"#2A3333",
+  },
+  textEnabled: {
+    background: "#FFF",
+    marginTop:"8px"
+  },
+  btnContainer: {
+    display: "flex",
+    alignItems: "flex-end",
+  },
+  cancelBtn: {
+    color: "#C66078",
+    borderColor: "#C66078",
+    "&:hover": {
+      borderColor: "#C66078",
+    },
+    fontFamily: "Cairo",
+    fontWeight: 700,
+    fontSize: "16px",
+    width: "160px",
+    height: "50px",
+  },
+  saveBtn: {
+    background: "#C66078",
+    color: "#ffff",
+    "&:hover": {
+      background: "#C66078",
+    },
+    fontFamily: "Cairo",
+    fontWeight: 700,
+    fontSize: "16px",
+    width: "160px",
+    height: "50px",
+  },
+}));

@@ -1,0 +1,28 @@
+{
+    "apps" : [{
+      "name"      : "FRONTEND",
+      "script"    : "NODE_ENV=production node dist/app.js",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production" : {
+        "NODE_ENV": "production"
+      }
+    }],
+    "deploy" : {
+      "staging" : {
+        "user" : "deploy",
+        "host" : [""],
+        "dns"  : "dev.medical-care.zangula.net",
+        "ref"  : "origin/staging",
+        "repo" : "",
+        "path" : "/home/deploy/medical-care/frontend",
+        "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
+        "post-deploy" : "yarn && yarn build",
+        "env"  : {
+          "NODE_ENV": "production"
+        }
+      }
+    }
+  }
+
